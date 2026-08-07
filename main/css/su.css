@@ -81,7 +81,7 @@ div.logo {
 
 @media screen and (max-width: 600px) {
     .SU-image-to {
-        scale: 200%;
+        scale: 100%;
         margin-top: 1rem;
         width: 95%;
         max-width: 1200px;
