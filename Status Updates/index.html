@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Índice - Status Updates</title>
+
+  <style>
+    /* Clase provista adaptada y estilos de página */
+    .SU-title {
+        margin: 1rem auto 0;
+        font-family: 'Determination Mono', monospace;
+        font-optical-sizing: auto;
+        font-weight: 700; /* más visible en pantalla negra */
+        font-style: normal;
+        text-align: center;
+        max-width: 580px;
+        font-variation-settings:
+          "ELSH" 0;
+        font-size: 2.5rem;
+        color: #ffff00;
+    }
+
+    :root {
+      --bg: #000;
+      --fg: #ffffff;
+      --muted: #bbb;
+      --link: #ffd700;
+    }
+
+    html,body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .updates {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+      justify-items: center;
+    }
+
+    .updates a {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 0.9rem 1rem;
+      color: var(--link);
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: left;
+      transition: transform .08s ease, background .12s ease;
+      font-size: 1.05rem;
+    }
+
+    .updates a:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .meta {
+      float: right;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:560px) {
+      .SU-title { font-size: 2rem; }
+      .updates a { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <h1 class="SU-title">Status Updates</h1>
+    <p class="subtitle">Listado de actualizaciones de estado disponibles.</p>
+
+    <ul class="updates">
+      <li>
+        <a href="status-updates/1-02072025.html">
+          1 — 02/07/2025
+          <span class="meta">status-updates/1-02072025.html</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="status-updates/2-02122025.html">
+          2 — 02/12/2025
+          <span class="meta">status-updates/2-02122025.html</span>
+        </a>
+      </li>
+    </ul>
+
+    <p style="margin-top:1.5rem;color:var(--muted);font-size:0.9rem;">
+      Para añadir más entradas, copia uno de los <code>&lt;li&gt;</code> anteriores y actualiza el href y el texto.
+    </p>
+  </main>
+</body>
+</html>
