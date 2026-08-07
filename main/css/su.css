@@ -155,8 +155,7 @@ div.logo {
     background-size: 220% 220%;
     clip-path: inset(0);
     contain: paint;
-    animation:
-        maskFlow 3s linear infinite,
+    animation: maskFlow 3s linear infinite;
 }
 
 .mask-overlay {
