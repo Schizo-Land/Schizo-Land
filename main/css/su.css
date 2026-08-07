@@ -21,15 +21,16 @@ div.logo {
 
 @media  screen and (max-width: 600px) {
     .season-winter {
-    margin-top: 5rem !important;
+    margin-top: 7rem !important;
     font-size: 2rem !important;
 }
     .season-summer {
-    margin-top: 5rem !important;
+    margin-top: 7rem !important;
     font-size: 2rem !important;
 }
     .hanging {
-    margin-top: -4rem !important;
+    top: 7% !important;
+    margin-top: 3rem !important;
     }
 }
 
