@@ -157,7 +157,6 @@ div.logo {
     contain: paint;
     animation:
         maskFlow 3s linear infinite,
-        maskColor 90s linear infinite;
 }
 
 .mask-overlay {
