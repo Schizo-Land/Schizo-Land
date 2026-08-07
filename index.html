@@ -25,26 +25,54 @@
 <body>
   <main class="wrap" role="main">
     <h1 class="SU-title">Status Updates</h1>
-    <p class="SU-text text-center">Listado de actualizaciones de estado disponibles.</p>
+    <p class="SU-text text-center">Actualizaciones disponibles de Schizo-Land</p>
     <ul>
-        <a href="main/status-updates/1-02072025.html" class="SUS-link text-center" style="text-decoration:none; font-size:2rem; display:block;">
-          Status Update 1
-          <span class="text-center" style="font-size:1rem; display:block;">02/07/2025</span>
+        <a href="null" class="SUS-link text-center" style="text-decoration:none; margin-bottom:1rem; font-size:2rem; display:block;">
+          Next Status Update
+          <span class="text-center" style="font-size:1rem; display:block;">XX/XX/XX</span>
         </a>
-        <a href="main/status-updates/2-02122025.html" class="SUS-link text-center" style="text-decoration:none; margin-bottom:-1.5rem; font-size:2rem; display:block;">
+        <a href="main/status-updates/2-02122025.html" class="SUS-link text-center" style="text-decoration:none; margin-bottom:1rem; font-size:2rem; display:block;">
           Status Update 2
           <span class="text-center" style="font-size:1rem; display:block;">02/12/2025</span>
+        </a>
+        <a href="main/status-updates/1-02072025.html" class="SUS-link text-center" style="text-decoration:none; margin-bottom:1rem; font-size:2rem; display:block;">
+          Status Update 1
+          <span class="text-center" style="font-size:1rem; display:block;">02/07/2025</span>
         </a>
     </ul>
   </main>
 
   <audio id="hover-sound" src="main/assets/sounds/snd_select.wav" preload="auto"></audio>
+  <audio id="cantselect-sound" src="main/assets/sounds/snd_cantselect.wav" preload="auto"></audio>
   <script>
     const hoverSound = document.getElementById('hover-sound');
+    const cantselectSound = document.getElementById('cantselect-sound');
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|Opera Mini/i.test(navigator.userAgent);
+
     document.querySelectorAll('.SUS-link').forEach(link => {
       link.addEventListener('mouseenter', () => {
         hoverSound.currentTime = 0;
         hoverSound.play().catch(() => {});
+      });
+
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+
+        if (href === 'null') {
+          event.preventDefault();
+          cantselectSound.currentTime = 0;
+          cantselectSound.play().catch(() => {});
+          return;
+        }
+
+        if (isMobile) {
+          event.preventDefault();
+          hoverSound.currentTime = 0;
+          hoverSound.play().catch(() => {});
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 250);
+        }
       });
     });
   </script>
