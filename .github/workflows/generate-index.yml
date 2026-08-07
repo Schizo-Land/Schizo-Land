@@ -1,0 +1,153 @@
+name: Generate Index
+
+on:
+  push:
+    paths:
+      - '*.html'
+      - '!index.html'
+  # También puedes ejecutarlo manualmente
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate index
+        run: |
+          # Crear el inicio del HTML
+          cat > index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="es">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>📝 Actualizaciones</title>
+              <style>
+                  * { margin: 0; padding: 0; box-sizing: border-box; }
+                  body {
+                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                      max-width: 800px;
+                      margin: 40px auto;
+                      padding: 20px;
+                      background: #0a0a0a;
+                      color: #fff;
+                  }
+                  h1 {
+                      font-size: 2.5em;
+                      margin-bottom: 30px;
+                      background: linear-gradient(135deg, #646cff, #ff6b6b);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                  }
+                  .update-list {
+                      list-style: none;
+                      padding: 0;
+                  }
+                  .update-item {
+                      background: #1a1a1a;
+                      margin: 12px 0;
+                      padding: 18px 24px;
+                      border-radius: 12px;
+                      border-left: 4px solid #646cff;
+                      transition: all 0.3s ease;
+                      animation: slideIn 0.3s ease;
+                  }
+                  .update-item:hover {
+                      background: #252525;
+                      transform: translateX(8px);
+                      border-left-color: #ff6b6b;
+                  }
+                  .update-item a {
+                      color: #fff;
+                      text-decoration: none;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                  }
+                  .update-title {
+                      font-size: 1.1em;
+                      font-weight: 500;
+                  }
+                  .update-date {
+                      font-size: 0.85em;
+                      color: #888;
+                      background: #0a0a0a;
+                      padding: 4px 14px;
+                      border-radius: 20px;
+                      white-space: nowrap;
+                  }
+                  .update-count {
+                      text-align: center;
+                      color: #666;
+                      margin-top: 30px;
+                      font-size: 0.9em;
+                  }
+                  @keyframes slideIn {
+                      from { opacity: 0; transform: translateX(-20px); }
+                      to { opacity: 1; transform: translateX(0); }
+                  }
+                  @media (max-width: 600px) {
+                      .update-item a { flex-direction: column; align-items: flex-start; gap: 8px; }
+                      h1 { font-size: 2em; }
+                  }
+              </style>
+          </head>
+          <body>
+              <h1>📝 Status Updates</h1>
+              <ul class="update-list">
+          EOF
+
+          # Contador para mostrar cuántas actualizaciones hay
+          count=0
+          
+          # Generar la lista de archivos (ordenados por fecha)
+          for file in $(ls -1 *.html | grep -v index.html | sort -r); do
+            if [ -f "$file" ]; then
+              # Extraer información del nombre
+              number=$(echo $file | cut -d'-' -f1)
+              date=$(echo $file | cut -d'-' -f2 | cut -d'.' -f1)
+              
+              # Formatear fecha: DD/MM/YYYY
+              day=${date:0:2}
+              month=${date:2:2}
+              year=${date:4:4}
+              formatted_date="$day/$month/$year"
+              
+              # Crear título amigable
+              title="Status Update $number"
+              
+              # Agregar al HTML
+              echo "                  <li class='update-item'>" >> index.html
+              echo "                      <a href='$file'>" >> index.html
+              echo "                          <span class='update-title'>📄 $title</span>" >> index.html
+              echo "                          <span class='update-date'>📅 $formatted_date</span>" >> index.html
+              echo "                      </a>" >> index.html
+              echo "                  </li>" >> index.html
+              
+              count=$((count + 1))
+            fi
+          done
+          
+          # Cerrar el HTML
+          echo '              </ul>' >> index.html
+          echo "              <div class='update-count'>📊 $count actualizaciones disponibles</div>" >> index.html
+          echo '          </body>' >> index.html
+          echo '          </html>' >> index.html
+      
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add index.html
+          
+          # Solo commit si hay cambios
+          if ! git diff --staged --quiet; then
+            git commit -m "🔄 Auto-generate index [skip ci]"
+            git push
+            echo "✅ Index actualizado correctamente"
+          else
+            echo "ℹ️ No hay cambios en el index"
+          fi
