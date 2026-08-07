@@ -158,3 +158,21 @@ div.logo {
     margin: 225px auto;
     scale: 125%;
 }
+.SUS-link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: "Geist Pixel", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: bold;
+    text-decoration: none;
+    color: #ffffff;
+    font-variation-settings:
+    "ELSH" 0;
+    font-size: 1.2rem;
+}
+
+.SUS-link:hover {
+    color: #ffff00;
+}
