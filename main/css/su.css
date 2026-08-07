@@ -19,6 +19,20 @@ div.logo {
     text-shadow: 0 0 20px #559096, 0 0 10px #00e1ff,0 0 5px #00e1ff;
 }
 
+@media  screen and (max-width: 600px) {
+    .season-winter {
+    margin-top: 5rem !important;
+    font-size: 2rem !important;
+}
+    .season-summer {
+    margin-top: 5rem !important;
+    font-size: 2rem !important;
+}
+    .hanging {
+    margin-top: -4rem !important;
+    }
+}
+
 .season-summer {
     margin-top: 1rem;
     font-family: 'Determination Mono', monospace;
