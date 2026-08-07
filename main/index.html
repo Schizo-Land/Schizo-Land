@@ -1,101 +1,18 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Índice - Status Updates</title>
-
-  <style>
-    /* Clase provista adaptada y estilos de página */
-    .SU-title {
-        margin: 1rem auto 0;
-        font-family: 'Determination Mono', monospace;
-        font-optical-sizing: auto;
-        font-weight: 700; /* más visible en pantalla negra */
-        font-style: normal;
-        text-align: center;
-        max-width: 580px;
-        font-variation-settings:
-          "ELSH" 0;
-        font-size: 2.5rem;
-        color: #ffff00;
-    }
-
-    :root {
-      --bg: #000;
-      --fg: #ffffff;
-      --muted: #bbb;
-      --link: #ffd700;
-    }
-
-    html,body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin-top: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-    }
-
-    .updates {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 0.75rem;
-      justify-items: center;
-    }
-
-    .updates a {
-      display: block;
-      width: 100%;
-      max-width: 620px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 0.9rem 1rem;
-      color: var(--link);
-      text-decoration: none;
-      border-radius: 8px;
-      text-align: left;
-      transition: transform .08s ease, background .12s ease;
-      font-size: 1.05rem;
-    }
-
-    .updates a:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .meta {
-      float: right;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width:560px) {
-      .SU-title { font-size: 2rem; }
-      .updates a { font-size: 1rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Update Selector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="assets/textures/SL-icon.png">
+    <link rel="stylesheet" href="css/su.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Jersey+10&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/undertale.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="wrap" role="main">
